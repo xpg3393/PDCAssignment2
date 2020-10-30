@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package MVC;
 
 import org.junit.After;
 import org.junit.AfterClass;
@@ -17,28 +11,12 @@ import static org.junit.Assert.*;
  * @author xpg3393
  */
 public class ModelTest {
-    
+
     public ModelTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
     }
 
     /**
-     * Test of getQAndA method, of class Model. Comparing 2 results which should 
+     * Test of getQAndA method, of class Model. Comparing 2 results which should
      * equal
      */
     @Test
@@ -49,11 +27,11 @@ public class ModelTest {
         instance.getQAndA(question);
         String expected = "Question 1: What is 2+2?";
         assertEquals(instance.currentQandO[0], expected);
-        
+
     }
-    
+
     /**
-     * Test of getQAndA method, of class Model. Comparing 2 results which should 
+     * Test of getQAndA method, of class Model. Comparing 2 results which should
      * not equal
      */
     @Test
@@ -63,10 +41,9 @@ public class ModelTest {
         Model instance = new Model();
         instance.getQAndA(question);
         String expected = "Question 1: What is 2+2?";
-        
-       
+
         assertFalse(expected.equals(instance.currentQandO[0]));
-        
+
     }
 
     /**
@@ -82,7 +59,7 @@ public class ModelTest {
     }
 
     /**
-     * Test of checkAnswer method, of class Model. checkAnswer should return 
+     * Test of checkAnswer method, of class Model. checkAnswer should return
      * true.
      */
     @Test
@@ -97,9 +74,9 @@ public class ModelTest {
         assertEquals(expResult, result);
 
     }
-    
+
     /**
-     * Test of checkAnswer method, of class Model. checkAnswer should return 
+     * Test of checkAnswer method, of class Model. checkAnswer should return
      * false.
      */
     @Test
@@ -115,5 +92,4 @@ public class ModelTest {
 
     }
 
-    
 }

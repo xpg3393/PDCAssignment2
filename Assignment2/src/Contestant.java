@@ -1,4 +1,3 @@
-package MVC;
 
 /**
  * This class is used to represent a contestant used in the Who Wants To Be A Millionaire game show.
@@ -15,11 +14,12 @@ public class Contestant {
 
     /**
      * Sets the contestants personal information based off input parameters
+     *
      * @param firstName First Name
      * @param lastName Last Name
      * @param age Age
      */
-    public Contestant(String firstName, String lastName, Integer age){
+    public Contestant(String firstName, String lastName, Integer age) {
 
         this.firstName = firstName;
         this.lastName = lastName;

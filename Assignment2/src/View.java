@@ -1,4 +1,4 @@
-package MVC;
+
 
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -17,7 +17,7 @@ import javax.swing.*;
  *
  * @author Yash Raniga 19088447
  */
-public class View extends JFrame implements Observer {
+public class View extends JFrame implements Observer, IView {
     private static JButton option1 = new JButton("A");
     private static JButton option2 = new JButton("B");
     private static JButton option3 = new JButton("C");
