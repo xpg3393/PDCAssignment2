@@ -40,19 +40,4 @@ public class Contestant {
         return age;
     }
 
-    public boolean isLifeline1() {
-        return lifeline1;
-    }
-
-    public boolean isLifeline2() {
-        return lifeline2;
-    }
-
-    public void setLifeline1(boolean lifeline1) {
-        this.lifeline1 = lifeline1;
-    }
-
-    public void setLifeline2(boolean lifeline2) {
-        this.lifeline2 = lifeline2;
-    }
 }

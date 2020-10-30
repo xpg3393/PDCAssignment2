@@ -7,12 +7,35 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 /**
+ * Testing the important functionality of the Model class
  *
  * @author xpg3393
  */
 public class ModelTest {
 
+    private Model instance;
+
     public ModelTest() {
+    }
+
+    @BeforeClass
+    public static void setUpClass() {
+
+    }
+
+    @AfterClass
+    public static void tearDownClass() {
+
+    }
+
+    @Before
+    public void setUp() {
+        instance = new Model();
+    }
+
+    @After
+    public void tearDown() {
+
     }
 
     /**
@@ -23,7 +46,7 @@ public class ModelTest {
     public void testCorrectGetQAndA() {
         System.out.println("getCorrectQAndA");
         int question = 1;
-        Model instance = new Model();
+
         instance.getQAndA(question);
         String expected = "Question 1: What is 2+2?";
         assertEquals(instance.currentQandO[0], expected);
@@ -38,7 +61,6 @@ public class ModelTest {
     public void testIncorrectGetQAndA() {
         System.out.println("getIncorrectQAndA");
         int question = 10;
-        Model instance = new Model();
         instance.getQAndA(question);
         String expected = "Question 1: What is 2+2?";
 
@@ -53,7 +75,6 @@ public class ModelTest {
     public void testSetContestant() {
         System.out.println("setContestant");
         Contestant contestant = new Contestant("Yash", "Raniga", 19);
-        Model instance = new Model();
         instance.setContestant(contestant);
         assertNotNull(instance.getContestant());
     }
@@ -67,7 +88,6 @@ public class ModelTest {
         System.out.println("checkCorrectAnswer");
         int question = 1;
         String answer = "C";
-        Model instance = new Model();
         instance.setContestant(new Contestant("Yash", "Raniga", 19));
         boolean expResult = true;
         boolean result = instance.checkAnswer(question, answer);
@@ -84,7 +104,6 @@ public class ModelTest {
         System.out.println("IncorrectCheckAnswer");
         int question = 10;
         String answer = "D";
-        Model instance = new Model();
         instance.setContestant(new Contestant("Yash", "Raniga", 19));
         boolean expResult = false;
         boolean result = instance.checkAnswer(question, answer);

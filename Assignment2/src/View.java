@@ -1,5 +1,4 @@
 
-
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -12,12 +11,13 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 /**
- *This class represents the View in the MVC pattern for Who Wants To Be A 
+ * This class represents the View in the MVC pattern for Who Wants To Be A
  * Millionaire
  *
  * @author Yash Raniga 19088447
  */
 public class View extends JFrame implements Observer, IView {
+
     private static JButton option1 = new JButton("A");
     private static JButton option2 = new JButton("B");
     private static JButton option3 = new JButton("C");
@@ -63,15 +63,16 @@ public class View extends JFrame implements Observer, IView {
         this.add(startPanel);
         this.setVisible(true);
 
-
     }
 
     /**
      * this method is to be used by the Controller class to make all objects
      * which require an action listener linked to the Controller class
+     *
      * @param actionListener the Controller class
      */
-    public void addActionListener(ActionListener actionListener){
+    @Override
+    public void addActionListener(ActionListener actionListener) {
         timer = new Timer(10, actionListener);
         timer.start();
         firstNameField.addActionListener(actionListener);
@@ -89,29 +90,30 @@ public class View extends JFrame implements Observer, IView {
 
     /**
      * Update for the observer-observable pattern
+     *
      * @param o The observable object, in this case the Model class
-     * @param arg the object used to update the questions and answers 
+     * @param arg the object used to update the questions and answers
      */
     @Override
     public void update(Observable o, Object arg) {
-        this.qAndA = (String[]) arg;
-        this.gamePanel.updateQAndA();
-        
+        View.qAndA = (String[]) arg;
+        View.gamePanel.updateQAndA();
+
     }
 
     /**
      * Start Panel used by the JFrame to register the contestant
      */
-    public static class StartPanel extends JPanel{
+    public static class StartPanel extends JPanel {
 
         /**
-         * Constructor initializes the JFrame, all labels, text fields and 
+         * Constructor initializes the JFrame, all labels, text fields and
          * buttons
-         * 
+         *
          */
-        public StartPanel(){
+        public StartPanel() {
             super();
-            setPreferredSize(new Dimension(1600,900));
+            setPreferredSize(new Dimension(1600, 900));
             setBackground(Color.BLACK);
             setLayout(null);
 
@@ -182,39 +184,38 @@ public class View extends JFrame implements Observer, IView {
     /**
      * Game Panel is used by the JFrame to play the game
      */
-    public static class GamePanel extends JPanel{
-
+    public static class GamePanel extends JPanel {
 
         /**
          * Constructor initializes the Panel, all buttons and labels
          */
-        public GamePanel(){
+        public GamePanel() {
             super();
-            setPreferredSize(new Dimension(1600,900));
+            setPreferredSize(new Dimension(1600, 900));
             setBackground(Color.WHITE);
 
             lifeline2Active = false;
-            
+
             questionNumber = 1;
             qAndA = new String[5];
 
             lifeline1 = new JButton("50/50");
-            lifeline1.setLocation(50,50);
-            lifeline1.setSize(250,100);
+            lifeline1.setLocation(50, 50);
+            lifeline1.setSize(250, 100);
             lifeline1.setBackground(Color.BLACK);
             lifeline1.setForeground(Color.WHITE);
             lifeline1.setFont(new Font("Arial", Font.PLAIN, 48));
 
             lifeline2 = new JButton("Double Dip");
-            lifeline2.setLocation(50,150);
-            lifeline2.setSize(250,100);
+            lifeline2.setLocation(50, 150);
+            lifeline2.setSize(250, 100);
             lifeline2.setBackground(Color.BLACK);
             lifeline2.setForeground(Color.WHITE);
             lifeline2.setFont(new Font("Arial", Font.PLAIN, 40));
 
             option1 = new JButton(qAndA[1]);
-            option1.setLocation(250,644);
-            option1.setSize(475,75);
+            option1.setLocation(250, 644);
+            option1.setSize(475, 75);
             option1.setBackground(Color.BLACK);
             option1.setForeground(Color.WHITE);
             option1.setOpaque(false);
@@ -223,8 +224,8 @@ public class View extends JFrame implements Observer, IView {
             option1.setFont(new Font("Arial", Font.PLAIN, 30));
 
             option2 = new JButton(qAndA[2]);
-            option2.setLocation(920,644);
-            option2.setSize(475,75);
+            option2.setLocation(920, 644);
+            option2.setSize(475, 75);
             option2.setBackground(Color.BLACK);
             option2.setForeground(Color.WHITE);
             option2.setOpaque(false);
@@ -233,8 +234,8 @@ public class View extends JFrame implements Observer, IView {
             option2.setFont(new Font("Arial", Font.PLAIN, 30));
 
             option3 = new JButton(qAndA[3]);
-            option3.setLocation(250,744);
-            option3.setSize(475,75);
+            option3.setLocation(250, 744);
+            option3.setSize(475, 75);
             option3.setBackground(Color.BLACK);
             option3.setForeground(Color.WHITE);
             option3.setOpaque(false);
@@ -243,8 +244,8 @@ public class View extends JFrame implements Observer, IView {
             option3.setFont(new Font("Arial", Font.PLAIN, 30));
 
             option4 = new JButton(qAndA[4]);
-            option4.setLocation(920,744);
-            option4.setSize(475,75);
+            option4.setLocation(920, 744);
+            option4.setSize(475, 75);
             option4.setBackground(Color.BLACK);
             option4.setForeground(Color.WHITE);
             option4.setOpaque(false);
@@ -253,16 +254,16 @@ public class View extends JFrame implements Observer, IView {
             option4.setFont(new Font("Arial", Font.PLAIN, 30));
 
             question = new JLabel(qAndA[0]);
-            question.setLocation(225,485);
-            question.setSize(1150,125);
+            question.setLocation(225, 485);
+            question.setSize(1150, 125);
             question.setBackground(Color.BLACK);
             question.setForeground(Color.WHITE);
             question.setBorder(null);
             question.setFont(new Font("Arial", Font.PLAIN, 30));
 
             moneyCount = new JLabel("$0");
-            moneyCount.setLocation(1150,55);
-            moneyCount.setSize(1150,125);
+            moneyCount.setLocation(1150, 55);
+            moneyCount.setSize(1150, 125);
             moneyCount.setBackground(Color.BLUE);
             moneyCount.setForeground(Color.WHITE);
             moneyCount.setBorder(null);
@@ -278,7 +279,6 @@ public class View extends JFrame implements Observer, IView {
             add(question);
             add(moneyCount);
 
-
             try {
                 gameImage = ImageIO.read(new File("images/Millionaire.png"));
             } catch (IOException ignored) {
@@ -286,11 +286,11 @@ public class View extends JFrame implements Observer, IView {
         }
 
         /**
-         * this method refreshes the option buttons and the question label with 
+         * this method refreshes the option buttons and the question label with
          * a new set of question and answers
          */
-        public void updateQAndA(){
-            if (questionNumber<=10) {
+        public void updateQAndA() {
+            if (questionNumber <= 10) {
                 question.setText(qAndA[0]);
                 question.setBackground(Color.BLACK);
                 option1.setText(qAndA[1]);
@@ -302,16 +302,16 @@ public class View extends JFrame implements Observer, IView {
                 option3.setBackground(Color.BLACK);
                 option4.setText(qAndA[4]);
                 option4.setBackground(Color.BLACK);
-            }
-            else{
+            } else {
                 finished = true;
 
             }
         }
 
         /**
-         * overridden paint component to draw the image in the background 
-         * @param g 
+         * overridden paint component to draw the image in the background
+         *
+         * @param g
          */
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
@@ -322,25 +322,24 @@ public class View extends JFrame implements Observer, IView {
     }
 
     /**
-     * End Panel is used by the JFrame to display an image after the user has 
+     * End Panel is used by the JFrame to display an image after the user has
      * finished playing Who Wants to Be A Millionaire
      */
-    public static class EndPanel extends JPanel{
+    public static class EndPanel extends JPanel {
 
         /**
          * Constructor initializes the Panel and sets the background image based
          * on the users results in the game
          */
-        public EndPanel(){
+        public EndPanel() {
             super();
-            setPreferredSize(new Dimension(1600,900) );
+            setPreferredSize(new Dimension(1600, 900));
             if (!lost) {
                 try {
                     endImage = ImageIO.read(new File("images/winner.jpg"));
                 } catch (IOException ignored) {
                 }
-            }
-            else{
+            } else {
                 try {
                     endImage = ImageIO.read(new File("images/loser.jpg"));
                 } catch (IOException ignored) {
@@ -349,8 +348,9 @@ public class View extends JFrame implements Observer, IView {
         }
 
         /**
-         * paint component overridden to draw the image 
-         * @param g 
+         * paint component overridden to draw the image
+         *
+         * @param g
          */
         @Override
         protected void paintComponent(Graphics g) {
@@ -365,16 +365,8 @@ public class View extends JFrame implements Observer, IView {
         return option1;
     }
 
-    public static void setOption1(JButton option1) {
-        View.option1 = option1;
-    }
-
     public static JButton getOption2() {
         return option2;
-    }
-
-    public static void setOption2(JButton option2) {
-        View.option2 = option2;
     }
 
     public static JButton getOption3() {
@@ -397,16 +389,8 @@ public class View extends JFrame implements Observer, IView {
         return lifeline1;
     }
 
-    public static void setLifeline1(JButton lifeline1) {
-        View.lifeline1 = lifeline1;
-    }
-
     public static JButton getLifeline2() {
         return lifeline2;
-    }
-
-    public static void setLifeline2(JButton lifeline2) {
-        View.lifeline2 = lifeline2;
     }
 
     public static JLabel getQuestion() {
@@ -475,10 +459,6 @@ public class View extends JFrame implements Observer, IView {
 
     public static JTextField getFirstNameField() {
         return firstNameField;
-    }
-
-    public static void setFirstNameField(JTextField firstNameField) {
-        View.firstNameField = firstNameField;
     }
 
     public static JTextField getLastNameField() {
@@ -569,10 +549,6 @@ public class View extends JFrame implements Observer, IView {
         View.questionNumber = questionNumber;
     }
 
-    public static String[] getqAndA() {
-        return qAndA;
-    }
-
     public static void setqAndA(String[] qAndA) {
         View.qAndA = qAndA;
     }
@@ -604,7 +580,7 @@ public class View extends JFrame implements Observer, IView {
     public static GamePanel getGamePanel() {
         return gamePanel;
     }
-    
+
     public static void setGamePanel(GamePanel gamePanel) {
         View.gamePanel = gamePanel;
     }

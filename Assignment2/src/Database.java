@@ -12,7 +12,7 @@ import java.sql.Statement;
  *
  * @author Yash Raniga 19088447
  */
-public class Database implements IDatabase{
+public class Database implements IDatabase {
 
     Connection conn = null;
     String url = "jdbc:derby:QuestionsAndAnswers;create=true";  //url of the DB host
@@ -29,6 +29,7 @@ public class Database implements IDatabase{
      * @param options the array of options for the game
      * @param answers the array of answers for the game
      */
+    @Override
     public void dbsetup(String[] questions, String[] options, String[] answers) {
         try {
             conn = DriverManager.getConnection(url, dbusername, dbpassword);
@@ -93,6 +94,7 @@ public class Database implements IDatabase{
      * @param correctAnswer the correct answer for the question
      * @param givenAnswer the answer given by the contestant
      */
+    @Override
     public void addResponse(String firstName, String lastName, String question,
             String correctAnswer, String givenAnswer) {
         try {
@@ -118,8 +120,8 @@ public class Database implements IDatabase{
         try {
             String[] types = {"TABLE"};
             DatabaseMetaData dbmd = conn.getMetaData();
-            ResultSet rsDBMeta = dbmd.getTables(null, null, null, null);//types);
-            //Statement dropStatement=null;
+            ResultSet rsDBMeta = dbmd.getTables(null, null, null, null);
+            
             while (rsDBMeta.next()) {
                 String tableName = rsDBMeta.getString("TABLE_NAME");
                 if (tableName.compareToIgnoreCase(newTableName) == 0) {

@@ -1,6 +1,4 @@
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.*;
 
 /**
@@ -38,6 +36,7 @@ public class Model extends Observable implements IModel {
      *
      * @param question the number of the question
      */
+    @Override
     public void getQAndA(int question) {
         if (question < 11) {
 
@@ -60,6 +59,7 @@ public class Model extends Observable implements IModel {
      * @param answer the answer given
      * @return
      */
+    @Override
     public boolean checkAnswer(int question, String answer) {
 
         database.addResponse(this.contestant.getFirstName(),
